@@ -1,88 +1,54 @@
-\# 🌾 Agricultural Crop Yield Prediction
+# 🌾 Agricultural Crop Yield Prediction
 
 
 
 A machine learning project for predicting agricultural crop yield using historical FAOSTAT data from Pakistan.
 
-
-
 The project uses \*\*feature engineering, lag features, rolling averages, one-hot encoding, and Gradient Boosting Regression\*\* to forecast crop yield and provide a 2025 prediction through an interactive Streamlit dashboard.
 
-
-
-\---
-
-
-
-\## 📌 Project Overview
-
-
-
+## 📌 Project Overview
 Agricultural crop yield can vary significantly over time due to changes in production, harvested area, and historical yield patterns.
-
-
-
 This project develops a machine learning pipeline to analyze historical agricultural data and predict crop yield for major crops in Pakistan.
 
+### Crops Covered
 
+* 🌾 Wheat
 
-\### Crops Covered
+* 🍚 Rice
 
+* 🌽 Maize
 
+* 🎋 Sugar cane
 
-\* 🌾 Wheat
+* 🥔 Potatoes
 
-\* 🍚 Rice
+* 🌿 Cotton
 
-\* 🌽 Maize
+## 🎯 Objectives
 
-\* 🎋 Sugar cane
+* Collect agricultural data from FAOSTAT
 
-\* 🥔 Potatoes
+* Clean and preprocess historical crop data
 
-\* 🌿 Cotton
+* Perform feature engineering
 
+* Create historical lag features
 
+* Create rolling-average features
 
-\---
+* Train and compare machine learning models
 
+*  Evaluate model performance using MAE, RMSE, and R²
 
+* Select the best-performing model
 
-\## 🎯 Objectives
+* Forecast crop yield for 2025
 
+* Build an interactive Streamlit dashboard
 
+## 🔄 Machine Learning Pipeline
 
-\* Collect agricultural data from FAOSTAT
-
-\* Clean and preprocess historical crop data
-
-\* Perform feature engineering
-
-\* Create historical lag features
-
-\* Create rolling-average features
-
-\* Train and compare machine learning models
-
-\* Evaluate model performance using MAE, RMSE, and R²
-
-\* Select the best-performing model
-
-\* Forecast crop yield for 2025
-
-\* Build an interactive Streamlit dashboard
-
-
-
-\---
-
-
-
-\## 🔄 Machine Learning Pipeline
-
-
-
-```text
+text
 
 FAOSTAT Data
 
@@ -134,123 +100,73 @@ Gradient Boosting Selection
 
 Streamlit Dashboard
 
-```
-
-
-
-\---
-
-
-
-\## 🧮 Feature Engineering
-
-
-
+## 🧮 Feature Engineering
 The model uses the following features:
 
+* Previous Yield
 
+* Previous Area
 
-\* Previous Yield
+* Previous Production
 
-\* Previous Area
+* Yield Lag 2
 
-\* Previous Production
+* Yield Lag 3
 
-\* Yield Lag 2
+* Rolling 3-Year Yield
 
-\* Yield Lag 3
+* Area Harvested
 
-\* Rolling 3-Year Yield
+* Production
 
-\* Area Harvested
+* Year
 
-\* Production
+* Crop category
 
-\* Year
-
-\* Crop category
-
-
-
-\### Lag Features
-
-
+### Lag Features
 
 Historical yield values were used to capture temporal patterns.
 
+* `Previous\_Yield`
 
+* `Yield\_Lag\_2`
 
-\* `Previous\_Yield`
-
-\* `Yield\_Lag\_2`
-
-\* `Yield\_Lag\_3`
-
-
+* `Yield\_Lag\_3`
 
 A three-year rolling average was also created:
 
-
-
-\* `Yield\_Rolling\_3`
-
-
-
-\---
-
-
-
-\## 🤖 Machine Learning Models
-
-
+* `Yield\_Rolling\_3`
+## 🤖 Machine Learning Models
 
 The project evaluated tree-based regression models for crop yield prediction.
 
-
-
-\### Random Forest
-
-
+### Random Forest
 
 Initial evaluation:
 
+* MAE: \*\*1810.29 kg/ha\*\*
 
+* RMSE: \*\*3453.74 kg/ha\*\*
 
-\* MAE: \*\*1810.29 kg/ha\*\*
+* R²: \*\*0.9802\*\*
 
-\* RMSE: \*\*3453.74 kg/ha\*\*
-
-\* R²: \*\*0.9802\*\*
-
-
-
-\### Gradient Boosting
-
-
+### Gradient Boosting
 
 Initial evaluation:
 
+* MAE: \*\*1400.72 kg/ha\*\*
 
+* RMSE: \*\*3014.09 kg/ha\*\*
 
-\* MAE: \*\*1400.72 kg/ha\*\*
-
-\* RMSE: \*\*3014.09 kg/ha\*\*
-
-\* R²: \*\*0.9849\*\*
-
-
+* R²: \*\*0.9849\*\*
 
 After hyperparameter tuning, the selected final model was:
 
 
 
-\### 🏆 Final Model: Gradient Boosting
-
-
+### 🏆 Final Model: Gradient Boosting
 
 Final test performance:
-
-
 
 \* \*\*MAE: 1610.75 kg/ha\*\*
 
@@ -258,25 +174,13 @@ Final test performance:
 
 \* \*\*R²: 0.9840\*\*
 
-
-
 The model was evaluated on the \*\*2020–2024 test period\*\*.
 
-
-
-\---
-
-
-
-\## ⚙️ Best Gradient Boosting Parameters
-
-
+## ⚙️ Best Gradient Boosting Parameters
 
 The tuned Gradient Boosting model used:
 
-
-
-```text
+text
 
 learning\_rate = 0.05
 
@@ -288,17 +192,7 @@ min\_samples\_split = 5
 
 n\_estimators = 300
 
-```
-
-
-
-\---
-
-
-
-\## 🌾 2025 Crop Yield Forecast
-
-
+## 🌾 2025 Crop Yield Forecast
 
 The final Gradient Boosting model generated the following 2025 predictions:
 
@@ -320,85 +214,49 @@ The final Gradient Boosting model generated the following 2025 predictions:
 
 | Cotton     |                 2060.64 |
 
-
-
 These predictions are model-generated forecasts and should not be interpreted as official agricultural statistics.
 
-
-
-\---
-
-
-
-\## 📊 Streamlit Dashboard
-
-
+## 📊 Streamlit Dashboard
 
 The project includes an interactive Streamlit dashboard that provides:
 
+* 2025 crop yield forecasts
 
+* Crop selection
 
-\* 2025 crop yield forecasts
+* Highest and lowest predicted yield
 
-\* Crop selection
+* Forecast visualization
 
-\* Highest and lowest predicted yield
+* Forecast results table
 
-\* Forecast visualization
+* CSV download
 
-\* Forecast results table
+* Actual vs Predicted analysis
 
-\* CSV download
+* Crop-wise model performance
 
-\* Actual vs Predicted analysis
+* Model information
 
-\* Crop-wise model performance
+## 📁 Project Structure
 
-\* Model information
-
-
-
-\---
-
-
-
-\## 📁 Project Structure
-
-
-
-```text
+text
 
 Agricultural-yield-prediction/
 
-│
-
 ├── app.py
-
-│
 
 ├── 01\_faostat\_data\_collection.ipynb
 
-│
-
 ├── faostat\_history.py
-
-│
 
 ├── faostat\_pakistan\_crop\_data.csv
 
-│
-
 ├── 2025\_crop\_yield\_forecast.csv
-
-│
 
 ├── test\_predictions.csv
 
-│
-
 ├── crop\_performance.csv
-
-│
 
 ├── models/
 
@@ -408,187 +266,86 @@ Agricultural-yield-prediction/
 
 │   └── feature\_names.pkl
 
-│
-
 └── .gitignore
 
-```
+## 🛠️ Technologies Used
 
+* Python
 
+* Pandas
 
-\---
+* NumPy
 
+* Scikit-learn
 
+* Joblib
 
-\## 🛠️ Technologies Used
+* Requests
 
+* FAOSTAT API
 
+* Streamlit
 
-\* Python
+* Matplotlib
 
-\* Pandas
+* Git
 
-\* NumPy
+* GitHub
 
-\* Scikit-learn
-
-\* Joblib
-
-\* Requests
-
-\* FAOSTAT API
-
-\* Streamlit
-
-\* Matplotlib
-
-\* Git
-
-\* GitHub
-
-
-
-\---
-
-
-
-\## 📦 Installation
-
-
-
+## 📦 Installation
 Clone the repository:
-
-
-
-```bash
+bash
 
 git clone https://github.com/MalikHassan-DS/Agricultural-yield-prediction.git
 
-```
-
-
-
 Navigate to the project:
 
-
-
-```bash
-
+bash
 cd Agricultural-yield-prediction
-
-```
-
-
 
 Create a virtual environment:
 
-
-
-```bash
-
+bash
 python -m venv .venv
-
-```
-
-
 
 Activate it on Windows:
 
-
-
-```powershell
-
+powershell
 .venv\\Scripts\\activate
-
-```
-
-
 
 Install the required packages:
 
-
-
-```bash
-
+bash
 pip install pandas numpy scikit-learn joblib requests streamlit matplotlib
 
-```
-
-
-
-\---
-
-
-
-\## ▶️ Run the Streamlit Application
-
-
+## ▶️ Run the Streamlit Application
 
 From the project directory:
 
-
-
-```bash
-
+bash
 streamlit run app.py
-
-```
-
-
 
 The application will open in your browser.
 
-
-
-\---
-
-
-
-\## 📈 Model Evaluation
-
-
+## 📈 Model Evaluation
 
 The model was trained using historical agricultural data and evaluated using a time-based split.
 
-
-
-\### Training Period
-
-
+### Training Period
 
 \*\*2003–2019\*\*
 
-
-
-\### Testing Period
-
-
-
+### Testing Period
 \*\*2020–2024\*\*
-
-
 
 This approach keeps later years for testing rather than randomly mixing historical and future observations.
 
-
-
-\---
-
-
-
-\## 🔍 Important Features
-
-
+## 🔍 Important Features
 
 Feature importance analysis showed that historical production and yield-related features were among the most influential predictors.
 
-
-
 Important features included:
-
-
-
-\* `Yield\_Lag\_2`
+|* `Yield\_Lag\_2`
 
 \* `Previous\_Production`
 
@@ -601,105 +358,61 @@ Important features included:
 \* Crop category
 
 
-
-\---
-
-
-
-\## ⚠️ Limitations
-
-
+## ⚠️ Limitations
 
 The current model is based primarily on historical agricultural production data and engineered temporal features.
 
-
-
 It does not currently include external factors such as:
 
+* Weather
 
+* Rainfall
 
-\* Weather
+* Temperature
 
-\* Rainfall
+* Soil conditions
 
-\* Temperature
+* Fertilizer usage
 
-\* Soil conditions
+* Irrigation
 
-\* Fertilizer usage
-
-\* Irrigation
-
-\* Pest and disease information
-
-
+* Pest and disease information
 
 Therefore, the predictions should be considered \*\*machine learning estimates\*\*, not official agricultural forecasts.
 
-
-
-\---
-
-
-
-\## 🚀 Future Improvements
-
-
+## 🚀 Future Improvements
 
 Possible future improvements include:
 
+* Add rainfall and weather data
 
+* Add temperature features
 
-\* Add rainfall and weather data
+* Add fertilizer and irrigation information
 
-\* Add temperature features
+* Compare XGBoost and LightGBM
 
-\* Add fertilizer and irrigation information
+* Perform advanced time-series validation
 
-\* Compare XGBoost and LightGBM
+* Add prediction intervals
 
-\* Perform advanced time-series validation
+ Automate yearly FAOSTAT data updates
 
-\* Add prediction intervals
+* Deploy the Streamlit application online
 
-\* Automate yearly FAOSTAT data updates
+* Add interactive historical trend charts
 
-\* Deploy the Streamlit application online
-
-\* Add interactive historical trend charts
-
-
-
-\---
-
-
-
-\## 👨‍💻 Author
-
-
+## 👨‍💻 Author
 
 \*\*Malik Hassan\*\*
 
-
-
 Data Analyst / Machine Learning Enthusiast
-
-
 
 GitHub:
 
 https://github.com/MalikHassan-DS
 
-
-
-\---
-
-
-
-\## ⭐ Project
-
-
-
+## ⭐ Project
 If you find this project useful, consider giving the repository a ⭐ on GitHub.
 
 
